@@ -1,0 +1,196 @@
+{
+  "model": "ollama/llama3.2:3b",
+  "llm_cost_usd": 0.00073456,
+  "results": [
+    {
+      "ticket": "T-00121",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00123",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00033",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00110",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00133",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00132",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00122",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00116",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00129",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00119",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00115",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00126",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00064",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00154",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00046",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00087",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00159",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00039",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00136",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00086",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00112",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00144",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00173",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00142",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00120",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00158",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00105",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00101",
+      "status": "no_suggestion",
+      "cited": []
+    },
+    {
+      "ticket": "T-00094",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    },
+    {
+      "ticket": "T-00061",
+      "status": "ready",
+      "cited": [
+        1
+      ]
+    }
+  ]
+}

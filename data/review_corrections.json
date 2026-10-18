@@ -1,0 +1,26 @@
+{
+  "reviewed": 50,
+  "ok": 49,
+  "fixed": 1,
+  "dropped": 0,
+  "sample": "data/review_sample.md (random 50 of 176, seed 0)",
+  "corrections": [
+    {
+      "id": "T-00144",
+      "split": "test",
+      "before": {
+        "category": "billing",
+        "subtopic": "refund_cancel",
+        "team": "Payments",
+        "priority": "P3"
+      },
+      "after": {
+        "category": "bug",
+        "subtopic": "board_dragdrop",
+        "team": "Product",
+        "priority": "P3"
+      },
+      "reason": "hand review: text is about Kanban drag and drop, not a refund"
+    }
+  ]
+}

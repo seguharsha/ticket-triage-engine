@@ -1,0 +1,20 @@
+# CPU-only PyTorch: avoids pulling ~2 GB of CUDA libraries into the image.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+sentence-transformers==3.3.1
+scikit-learn==1.6.0
+numpy==2.2.1
+
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.36
+psycopg[binary]==3.2.3
+pgvector==0.3.6
+celery[redis]==5.4.0
+redis==5.2.1
+pydantic-settings==2.7.0
+python-multipart==0.0.20
+beautifulsoup4==4.12.3
+httpx==0.28.1
+prometheus-client==0.21.1
+pytest==8.3.4

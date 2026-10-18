@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.env
+attachments/
+data/raw/
+data/cache/
+data/replay_map.jsonl
+reports/load_*.csv
+data/trial/
+data_generation.log
+compose_build.log
+
+# Trained model (a pickle; rebuild with: python -m scripts.train_classifier)
+models/
+# Manual review worksheets (summaries are kept in data/review_corrections.json and reports/reply_eval.json)
+data/review_sample.md
+reports/reply_review.md

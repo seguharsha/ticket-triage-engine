@@ -1,0 +1,80 @@
+{
+  "tickets": 30,
+  "usable": 21,
+  "usable_share": 0.7,
+  "drafts": {
+    "count": 20,
+    "rated_usable": 20
+  },
+  "coverage": 0.6666666666666666,
+  "no_suggestion": {
+    "count": 10,
+    "correct": 1,
+    "missed": [
+      {
+        "n": 1,
+        "ticket": "T-00121",
+        "matching_sources": [
+          "R-0010"
+        ]
+      },
+      {
+        "n": 6,
+        "ticket": "T-00132",
+        "matching_sources": [
+          "R-0021"
+        ]
+      },
+      {
+        "n": 7,
+        "ticket": "T-00122",
+        "matching_sources": [
+          "R-0010"
+        ]
+      },
+      {
+        "n": 10,
+        "ticket": "T-00119",
+        "matching_sources": [
+          "R-0010"
+        ]
+      },
+      {
+        "n": 11,
+        "ticket": "T-00115",
+        "matching_sources": [
+          "R-0010"
+        ]
+      },
+      {
+        "n": 12,
+        "ticket": "T-00126",
+        "matching_sources": [
+          "R-0010"
+        ]
+      },
+      {
+        "n": 16,
+        "ticket": "T-00087",
+        "matching_sources": [
+          "R-0004"
+        ]
+      },
+      {
+        "n": 26,
+        "ticket": "T-00158",
+        "matching_sources": [
+          "R-0020"
+        ]
+      },
+      {
+        "n": 28,
+        "ticket": "T-00101",
+        "matching_sources": [
+          "R-0007"
+        ]
+      }
+    ]
+  },
+  "rule": "decline is correct iff no retrieved source shares the ticket's subtopic"
+}

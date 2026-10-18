@@ -1,0 +1,19 @@
+{
+  "generator_model": "ollama/llama3.2:3b",
+  "provider": "ollama",
+  "seed": 7,
+  "requested": {
+    "normal": 100,
+    "groups": 10,
+    "incidents": 3,
+    "resolved": 30
+  },
+  "tickets": 176,
+  "test_tickets": 41,
+  "train_tickets": 135,
+  "standalone_tickets": 99,
+  "duplicate_groups": 9,
+  "incident_groups": 3,
+  "tickets_in_groups": 77,
+  "resolved_tickets": 29
+}

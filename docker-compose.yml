@@ -1,0 +1,94 @@
+﻿x-app: &app
+  build: .
+  env_file: .env
+  environment:
+    DATABASE_URL: postgresql+psycopg://triage:triage@db:5432/triage
+    REDIS_URL: redis://redis:6379/0
+    ATTACHMENT_DIR: /data/attachments
+    HF_HOME: /data/hf  # embedding model download cache
+    # Ollama runs on the host, not in a container.
+    OLLAMA_URL: http://host.docker.internal:11434
+    # Overridable per run, e.g. LLM_PROVIDER=fake for load tests.
+    LLM_PROVIDER: ${LLM_PROVIDER:-ollama}
+    TORCH_THREADS: ${TORCH_THREADS:-2}  # per worker process; keep processes x threads <= cores
+  extra_hosts:
+    - "host.docker.internal:host-gateway"  # for Linux hosts
+  volumes:
+    - ./:/app
+    - attachments:/data/attachments
+    - hf_cache:/data/hf
+
+services:
+  db:
+    image: pgvector/pgvector:0.8.0-pg16  # >= 0.8 for hnsw.iterative_scan
+    environment:
+      POSTGRES_USER: triage
+      POSTGRES_PASSWORD: triage
+      POSTGRES_DB: triage
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U triage -d triage"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  # One-shot schema setup; api and worker wait for it to finish.
+  migrate:
+    <<: *app
+    command: python -m app.init_db
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    <<: *app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 ${UVICORN_FLAGS:---reload}
+    ports:
+      - "8000:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+
+  worker:
+    <<: *app
+    command: celery -A app.worker.celery_app:celery_app worker -Q celery --loglevel=info --concurrency=${WORKER_CONCURRENCY:-4} -B -s /tmp/celerybeat-schedule  # -B runs the sweeper schedule; keep to one worker container
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+
+  # Reply drafts only, so triage never waits behind a slow LLM call.
+  worker-drafts:
+    <<: *app
+    command: celery -A app.worker.celery_app:celery_app worker -Q drafts --loglevel=info --concurrency=1 -n drafts@%h
+    environment:
+      DATABASE_URL: postgresql+psycopg://triage:triage@db:5432/triage
+      REDIS_URL: redis://redis:6379/0
+      OLLAMA_URL: http://host.docker.internal:11434
+      LLM_PROVIDER: ${LLM_PROVIDER:-ollama}
+      WARM_UP_MODELS: "false"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+volumes:
+  pgdata:
+  attachments:
+  hf_cache:
